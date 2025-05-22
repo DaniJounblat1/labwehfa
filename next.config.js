@@ -1,17 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // This enables static HTML export (required for GitHub Pages)
   eslint: {
-    ignoreDuringBuilds: true
+    ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
   },
   images: {
     domains: ["placeholder.com"],
-    unoptimized: true // Required for static export if you're using <Image>
-  }
-};
+    unoptimized: true,
+    formats: ["image/webp", "image/jpeg", "image/png"],
+  },
+  // Add this to ensure proper client-side navigation
+  experimental: {
+    appDir: true,
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
